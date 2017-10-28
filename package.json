@@ -4,7 +4,9 @@
   "description": "Wordpress Theme using React written for kevindahlberg.com",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
