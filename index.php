@@ -9,7 +9,7 @@
  *
  * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
  *
- * @package theocdcoder
+ * @package wpkdreact
  * @version 1.0
  */
 

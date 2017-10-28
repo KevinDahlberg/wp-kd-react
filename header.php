@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package theocdcoder
+ * @package wpkdreact
  * @version 1.0
  */
 
@@ -19,7 +19,7 @@
 	<meta name="theme-color" content="#000000">
 	<link rel="manifest" href="/manifest.json">
 	<link rel="shortcut icon" href="/favicon.ico">
-	<title>The OCD Coder</title>
+	<title>Kevin Dahlberg</title>
 	<?php wp_head(); ?>
 </head>
 <body>

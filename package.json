@@ -1,0 +1,45 @@
+{
+  "name": "wp-kd-react",
+  "version": "1.0.0",
+  "description": "Wordpress Theme using React written for kevindahlberg.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinDahlberg/wp-kd-react.git"
+  },
+  "keywords": [
+    "Wordpres",
+    "React",
+    "React-Router"
+  ],
+  "author": "Kevin Dahlberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KevinDahlberg/wp-kd-react/issues"
+  },
+  "homepage": "https://github.com/KevinDahlberg/wp-kd-react#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.9.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^21.2.1",
+    "react": "^16.0.0",
+    "react-dev-utils": "^4.1.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.4",
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2",
+    "webpack": "^3.8.1"
+  }
+}
