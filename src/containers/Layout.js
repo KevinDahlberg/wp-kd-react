@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import Menu from './menu/Menu'
+import Menu from '../components/menu/Menu'
 import Footer from './footer/Footer'
 
 const Layout = () => (
