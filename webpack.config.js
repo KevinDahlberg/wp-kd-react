@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: __dirname + '/src/index.js',
   output: {
-    path: __dirname + '/server/public',
+    path: __dirname + '/public',
     filename: 'bundle.js'
   },
   plugins: [
@@ -58,7 +58,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.tff(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.ttf$/,
         use: [
           {
             loader: 'url-loader',
