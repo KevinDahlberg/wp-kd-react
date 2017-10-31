@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT serif', serif !important;
+  font-size: 20px;
+  line height: 33px;
+  min-height: 100%;
+  position: relative
+}
+
+.content-body {
+  padding-top: 70px;
+  min-height: 100%;
+}

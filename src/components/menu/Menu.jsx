@@ -5,14 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default class Menu extends Component {
   render() {
     return (
-      <Navbar fixedTop>
-        <Navbar.Header>
-          <LinkContainer to="/">
-            <Navbar.Brand>
-              The OCD Coder
-            </Navbar.Brand>
-          </LinkContainer>
-        </Navbar.Header>
+      <Navbar fixedTop inverse>
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to="/home">
