@@ -91,9 +91,29 @@ export function fetchPosts() {
     dispatch(requestPosts())
     fetch('http://kevindahlberg.com/wp-json/wp/v2/posts?_embed=true', init)
     .then(response => response.json())
-    .then(json => dispatch(receivePosts(json)))
+    .then(json => dispatch(getItemCategories(json)))
   }
 }
+
+/**
+ * @function getItemCategories
+ * @desc gets the categories of the items in the postArray from the database
+ */
+ function getItemCategories(postArray){
+   postArray.forEach((post) => {
+     const url = 'http://kevindahlberg.com/wp-json/wp/v2/categories/' + post.categories[0]
+     const init = {
+       method: 'GET'
+     }
+     fetch(url, init)
+     .then(response => response.json())
+     .then(json => console.log(json.name))
+   })
+
+   return dispatch => {
+     dispatch(receivePosts(postArray))
+   }
+ }
 
 /**
  * @function shouldFetchSinglePosts

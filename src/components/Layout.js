@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import Menu from '../components/menu/Menu.jsx'
-import Footer from '../components/footer/Footer.jsx'
+import Menu from './menu/Menu.jsx'
+import Footer from './footer/Footer.jsx'
 
-import Home from './Home'
+import Home from './home/HomeContainer.js'
 
 const Layout = () => (
   <div className="body">
