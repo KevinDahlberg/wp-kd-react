@@ -12,9 +12,7 @@ const initialState = {
   isFetching: false
 }
 
-/**
- * ACTIONS
- */
+/** ACTIONS **/
 
 /**
  * @function requestPosts
@@ -29,6 +27,7 @@ export function requestPosts() {
  * @desc action that sets the posts array and changes isFetching to false
  */
 function receivePosts(json) {
+  console.log(json)
   return {type: RECEIVE_POSTS, posts: json, isFetching: false}
 }
 
@@ -36,7 +35,6 @@ function receivePosts(json) {
  * @function requestSinglePost
  * @desc sets currentPost in state to blank
  */
-
  function requestSinglePost() {
    return {type: REQUEST_SINGLE_POST, currentPost: []}
  }
@@ -49,9 +47,7 @@ function receiveSinglePost(json) {
   return {type: RECEIVE_SINGLE_POST, currentPost: json}
 }
 
-/**
- * ACTION FUNCTIONS
- */
+/** ACTION FUNCTIONS */
 
 /**
  * @function fetchPostsIfNeeded
@@ -91,29 +87,56 @@ export function fetchPosts() {
     dispatch(requestPosts())
     fetch('http://kevindahlberg.com/wp-json/wp/v2/posts?_embed=true', init)
     .then(response => response.json())
-    .then(json => dispatch(getItemCategories(json)))
+    .then(json => dispatch(receivePosts(sanitizePostArray(json))))
   }
+}
+
+/**
+ * @function sanitizePostArray
+ * @desc makes the items in the post array easier to read for the app.
+ */
+function sanitizePostArray(postArray){
+  console.log('Post Array in sanitize Posts ', postArray)
+  const newArray = postArray.map((post) => {
+    console.log('Post in Map is ', post)
+    let singlePost = {}
+    singlePost = {
+      title: post.title.rendered,
+      content: post.content.rendered,
+      category: post.categories,
+      featuredImage: post.featured_media
+    }
+    return singlePost
+  })
+  return newArray;
 }
 
 /**
  * @function getItemCategories
  * @desc gets the categories of the items in the postArray from the database
  */
- function getItemCategories(postArray){
-   postArray.forEach((post) => {
-     const url = 'http://kevindahlberg.com/wp-json/wp/v2/categories/' + post.categories[0]
-     const init = {
-       method: 'GET'
-     }
-     fetch(url, init)
-     .then(response => response.json())
-     .then(json => console.log(json.name))
-   })
-
-   return dispatch => {
-     dispatch(receivePosts(postArray))
-   }
+function getItemCategory(categories){
+  const url = 'http://kevindahlberg.com/wp-json/wp/v2/categories/' + categories[0]
+  const init = {
+    method: 'GET'
+  }
+  fetch(url, init)
+    .then(response => response.json())
+    .then(json => console.log(json.name))
  }
+/**
+ * @function getFeaturedImage
+ * @desc gets the information for the featured image
+ */
+function getFeaturedImage(image){
+  const url = 'http://kevindahlberg.com/wp-json/wp/v2/media' + image
+  const init = {
+    method: 'GET'
+  }
+  fetch(url, init)
+    .then(response => response.json())
+    .then(json => console.log(json))
+}
 
 /**
  * @function shouldFetchSinglePosts
@@ -162,11 +185,10 @@ export function filterSinglePost(state, postName) {
   }
 }
 
-/**
- * REDUCER
- */
+/** REDUCER */
 
 function postReducer(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case REQUEST_POSTS:
       return state
