@@ -38,8 +38,8 @@ export default class PostExcerpt extends Component {
             {this.excerptImage(postInfo.image)}
           </Col>
           <Col xs={6}>
-            {this.excerptTitle(postInfo.title.rendered)}
-            {this.excerptSummary(postInfo.excerpt.rendered)}
+            {this.excerptTitle(postInfo.title)}
+            {this.excerptSummary(postInfo.excerpt)}
           </Col>
         </Row>
       )
@@ -47,8 +47,8 @@ export default class PostExcerpt extends Component {
       return (
         <Row>
           <Col xs={12}>
-            {this.excerptTitle(postInfo.title.rendered)}
-            {this.excerptSummary(postInfo.excerpt.rendered)}
+            {this.excerptTitle(postInfo.title)}
+            {this.excerptSummary(postInfo.excerpt)}
           </Col>
         </Row>
       )
@@ -56,7 +56,7 @@ export default class PostExcerpt extends Component {
   }
 
   excerptBox (postInfo) {
-    const postPath = '/post/' + postInfo.title.rendered.toLowerCase().toString().replace(/\s/g,'-')
+    const postPath = '/post/' + postInfo.title.toLowerCase().toString().replace(/\s/g,'-')
     return (
     <Link to={postPath}>
       <div key={postInfo.id}>

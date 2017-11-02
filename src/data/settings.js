@@ -54,7 +54,7 @@ function fetchCategories() {
   }
 }
 
-//Maybe add a sanitize function here.
+//Maybe add a sanitize function here to make object look pretty.
 
 //Other Routes for site settings can be added here, such as Page Title, Page Image, and other things.
 
@@ -62,7 +62,7 @@ function settingsReducer(state = initialState, action) {
   switch (action.type) {
     case REQUEST_CATEGORIES:
       return state
-    case RECEIVE_CATEGORIES
+    case RECEIVE_CATEGORIES:
       return {
         ...state,
         categories: action.categories

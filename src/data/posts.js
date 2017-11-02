@@ -97,14 +97,15 @@ export function fetchPosts() {
  */
 function sanitizePostArray(postArray){
   console.log('Post Array in sanitize Posts ', postArray)
+  //if it turns out you want to have your post object contain more stuff, change it here
   const newArray = postArray.map((post) => {
-    console.log('Post in Map is ', post)
     let singlePost = {}
     singlePost = {
       title: post.title.rendered,
       content: post.content.rendered,
       category: post.categories,
-      featuredImage: post.featured_media
+      featuredImage: post.featured_media,
+      excerpt: post.excerpt.rendered
     }
     return singlePost
   })
@@ -124,6 +125,7 @@ function getItemCategory(categories){
     .then(response => response.json())
     .then(json => console.log(json.name))
  }
+
 /**
  * @function getFeaturedImage
  * @desc gets the information for the featured image
