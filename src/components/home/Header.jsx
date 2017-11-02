@@ -3,12 +3,19 @@ import { Grid, Row, Col, Jumbotron } from 'react-bootstrap'
 
 export default class Header extends Component {
 
-  headerContent (title) {
+  headerContent (settings) {
     return (
       <Jumbotron>
-        <h1>{title}</h1>
+        <h1>{settings}</h1>
         <p>Web Developer</p>
       </Jumbotron>
+    )
+  }
+
+  subtitleContent (categoryArray, num) {
+    let type = categoryArray[num]
+    return (
+      <p>{type}</p>
     )
   }
 

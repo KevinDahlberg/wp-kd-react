@@ -19,8 +19,8 @@ export default class ViewPost extends Component {
 
   postLayout = (post, idx) => (
     <Col xs={12} key={idx}>
-    {this.postHeader(post.title.rendered)}
-    {this.postContent(post.content.rendered)}
+    {this.postHeader(post.title)}
+    {this.postContent(post.content)}
     </Col>
   )
 

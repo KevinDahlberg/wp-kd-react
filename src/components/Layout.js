@@ -5,6 +5,7 @@ import Menu from './menu/Menu.jsx'
 import Footer from './footer/Footer.jsx'
 
 import Home from './home/HomeContainer.js'
+import Post from './singlePost/Post.js'
 
 const Layout = () => (
   <div className="body">
@@ -13,6 +14,7 @@ const Layout = () => (
         <Menu />
         <div className="content-body">
         <Route exact path="/" component={Home} />
+        <Route exact path="/:title" component={Post} />
         </div>
         <Footer />
       </div>

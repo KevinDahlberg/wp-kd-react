@@ -102,6 +102,7 @@ function sanitizePostArray(postArray){
     let singlePost = {}
     singlePost = {
       title: post.title.rendered,
+      slug: post.slug,
       content: post.content.rendered,
       category: post.categories,
       featuredImage: post.featured_media,
@@ -164,6 +165,7 @@ export function shouldFetchSinglePosts(postName) {
  * @desc gets a single post from the db
  */
 export function fetchSinglePost(postName) {
+  console.log('post name in fetch is ', postName)
   const init = {
     method: 'GET'
   }
@@ -171,7 +173,7 @@ export function fetchSinglePost(postName) {
   return dispatch => {
     fetch(url, init)
     .then(response => response.json())
-    .then(json => dispatch(receiveSinglePost(json)))
+    .then(json => dispatch(receiveSinglePost(sanitizePostArray(json))))
   }
 }
 
@@ -180,8 +182,12 @@ export function fetchSinglePost(postName) {
  * @desc filters out a single post the posts in state.postReducer
  */
 export function filterSinglePost(state, postName) {
+  console.log('post name in filter is ', postName)
+  console.log('state in filter is ', state)
   const posts = state.postReducer.posts
+  console.log('posts is ', posts)
   const singlePost = posts.filter((post) => {return post.slug === postName})
+  console.log('singlePost is ', singlePost)
   return dispatch => {
     dispatch(receiveSinglePost(singlePost))
   }
