@@ -5,10 +5,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 export default class Menu extends Component {
   render() {
     return (
-      <Navbar fixedTop inverse>
+      <Navbar inverse fixedTop className="menu">
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to="/home">
+            <LinkContainer to="/">
               <NavItem eventKey={1} href="/home">Home</NavItem>
             </LinkContainer>
           </Nav>

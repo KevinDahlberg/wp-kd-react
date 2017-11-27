@@ -18,8 +18,8 @@ function requestPages() {
   return {type: REQUEST_PAGES}
 }
 
-function receivePages() {
-  return {type: RECEIVE_PAGES, pages: []}
+function receivePages(pageArray) {
+  return {type: RECEIVE_PAGES, pages: pageArray}
 }
 
 function requestSinglePage(){
@@ -31,7 +31,7 @@ function receiveSinglePage(json){
 }
 
 /** Pages Functions */
-function fetchPagesIfNeeded() {
+export function fetchPagesIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchPages(getState())) {
       return dispatch(fetchPages())
@@ -61,16 +61,17 @@ function fetchPages() {
 }
 
 function sanitizePages(pageArray) {
-  const newArray = pageArray.map((post) => {
+  console.log(pageArray)
+  const newArray = pageArray.map((page) => {
     let singlePage = {}
     singlePage = {
-      title: post.title.rendered,
-      slug: post.slug,
-      content: post.content.rendered,
-      category: post.categories,
-      featuredImage: post.featured_media,
-      excerpt: post.excerpt.rendered
+      title: page.title.rendered,
+      slug: page.slug,
+      content: page.content.rendered,
+      featuredImage: page.featured_media,
+      excerpt: page.excerpt.rendered
     }
+    console.log(singlePage)
     return singlePage
   })
   return newArray;
@@ -122,7 +123,7 @@ function pageReducer(state = initialState, action) {
     case RECEIVE_PAGES:
       return {
         ...state,
-        pages: action.pages
+        pages: action.pageArray
       }
     case REQUEST_SINGLE_PAGE:
       return state

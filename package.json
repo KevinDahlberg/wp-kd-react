@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
+    "build": "webpack --config webpack.config.production.js",
     "watch": "webpack --watch"
   },
   "repository": {
@@ -31,7 +31,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0-beta.2",
     "css-loader": "^0.28.7",
     "eslint": "^4.9.0",
     "eslint-loader": "^1.9.0",

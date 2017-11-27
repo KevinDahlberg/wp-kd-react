@@ -14,6 +14,7 @@ const Layout = () => (
         <Menu />
         <div className="content-body">
         <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/:title" component={Post} />
         </div>
         <Footer />

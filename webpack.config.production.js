@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var eslintFormatter = require('react-dev-utils/eslintFormatter')
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -9,13 +10,24 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false        
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        warnings: false
       }
     })
   ],
+  resolve: {
+    alias: {
+      'react': 'react-lite',
+      'react-dom': 'react-lite'
+    }
+  },
   module: {
     loaders: [
       {

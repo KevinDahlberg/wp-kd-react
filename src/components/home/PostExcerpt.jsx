@@ -5,8 +5,16 @@ import { Link } from 'react-router-dom'
 export default class PostExcerpt extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      colorArray: ['#fad5a6', '#fbb79e', '#e25f70']
+    }
   }
 
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  
   excerptTitle (title) {
     return (
       <Row>
@@ -23,45 +31,29 @@ export default class PostExcerpt extends Component {
     )
   }
 
-  excerptImage (image) {
-    return (
-      <img src={image.url} alt={image.alt} />
-    )
-  }
-
-  excerptLayout (postInfo) {
-    if (postInfo.image) {
-      return (
-        <Row>
-          <Col xs={6}>
-            {this.excerptImage(postInfo.image)}
-          </Col>
-          <Col xs={6}>
-            {this.excerptTitle(postInfo.title)}
-            {this.excerptSummary(postInfo.excerpt)}
-          </Col>
-        </Row>
-      )
-    } else {
-      return (
-        <Row>
-          <Col xs={12}>
-            {this.excerptTitle(postInfo.title)}
-            {this.excerptSummary(postInfo.excerpt)}
-          </Col>
-        </Row>
-      )
-    }
-  }
-
-  excerptBox (postInfo) {
+  excerptBox (colorArray, postInfo) {
+    console.log(postInfo)
     const postPath = postInfo.title.toLowerCase().toString().replace(/\s/g,'-')
+    const colorIndex = this.getRandomInt(0, (colorArray.length - 1))
+    const color = colorArray.slice(colorIndex, colorIndex+1)
+    console.log(color);
+    
+    let boxStyle = {
+      backgroundColor: color[0],
+      padding: '30px',
+      height: '350px',
+      marginBottom: '20px'
+    }
+
     return (
     <Link to={postPath}>
       <div key={postInfo.id}>
-      <Col xs={4}>
-        {this.excerptLayout(postInfo)}
-      </Col>
+        <Col xs={12} md={3}>
+          <Col xs={12} style={boxStyle}>
+            {this.excerptTitle(postInfo.title)}
+            {this.excerptSummary(postInfo.excerpt)}
+          </Col>
+        </Col>
       </div>
     </Link>
     )
@@ -73,7 +65,7 @@ export default class PostExcerpt extends Component {
         {this.props.posts.map((post, idx) => {
             return (
               <div key={idx}>
-              {this.excerptBox(post)}
+              {this.excerptBox(this.state.colorArray, post)}
               </div>
             )
           })

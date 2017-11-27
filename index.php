@@ -13,12 +13,25 @@
  * @version 1.0
  */
 
- get_header();
-
  ?>
+
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<meta name="theme-color" content="#000000">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<title>Kevin Dahlberg</title>
+	<?php wp_head(); ?>
+</head>
+<body>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
 
  <div id="root"></div>
 
- <?php
-	get_footer();
- ?>
+ <?php wp_footer(); ?>
+
+</body>
+</html>
