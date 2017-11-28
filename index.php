@@ -1,13 +1,9 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * e.g., it puts together the home page when no home.php file exists.
- *
- * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
+ * This "theme" sets up wordpress to be used to manage the content of your site and not the main view.
+ * It is designed to be used in conjunction with with a front end that utilizes the Wordpress REST API.
+ * The accompanying plugin that registers all the extra routes can be found at:
+ * https://github.com/KevinDahlberg/wp-rest-routes-plugin
  *
  * @package wpkdreact
  * @version 1.0
@@ -24,6 +20,10 @@
 	<link rel="manifest" href="/manifest.json">
 	<link rel="shortcut icon" href="/favicon.ico">
 	<title>Kevin Dahlberg</title>
+
+	<!-- change this url to match the url of your main site -->
+	<meta http-equiv="refresh" content="0; url=http://kevindahlberg.com" />
+	
 	<?php wp_head(); ?>
 </head>
 <body>
